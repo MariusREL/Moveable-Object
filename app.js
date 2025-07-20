@@ -15,17 +15,22 @@ window.addEventListener("DOMContentLoaded", centerCircle);
 window.addEventListener("resize", centerCircle);
 
 document.addEventListener("keydown", (e) => {
-  console.log(e.code);
-  if (e.code === "KeyW" && parseInt(circle.style.top) <= 800) {
+  let top = parseInt(window.getComputedStyle(circle).top);
+  let left = parseInt(window.getComputedStyle(circle).left);
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const circlePos = circle.getBoundingClientRect();
+
+  if (e.code === "KeyW" && top > 0) {
     circle.style.top = parseInt(circle.style.top) - 10 + "px";
   }
-  if (e.code === "KeyS") {
+  if (e.code === "KeyS" && top + circlePos.height < windowHeight) {
     circle.style.top = parseInt(circle.style.top) + 10 + "px";
   }
-  if (e.code === "KeyA") {
+  if (e.code === "KeyA" && left >= 0) {
     circle.style.left = parseInt(circle.style.left) - 10 + "px";
   }
-  if (e.code === "KeyD") {
+  if ((e.code === "KeyD") & (left + circlePos.width < windowWidth)) {
     circle.style.left = parseInt(circle.style.left) + 10 + "px";
   }
 });
