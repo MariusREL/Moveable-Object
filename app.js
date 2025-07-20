@@ -22,15 +22,31 @@ document.addEventListener("keydown", (e) => {
   const circlePos = circle.getBoundingClientRect();
 
   if (e.code === "KeyW" && top > 0) {
-    circle.style.top = parseInt(circle.style.top) - 10 + "px";
+    top -= 10;
+    circle.style.top = top + "px";
   }
   if (e.code === "KeyS" && top + circlePos.height < windowHeight) {
-    circle.style.top = parseInt(circle.style.top) + 10 + "px";
+    top += 10;
+    circle.style.top = top + "px";
   }
   if (e.code === "KeyA" && left >= 0) {
-    circle.style.left = parseInt(circle.style.left) - 10 + "px";
+    left -= 10;
+    circle.style.left = left + "px";
   }
   if ((e.code === "KeyD") & (left + circlePos.width < windowWidth)) {
-    circle.style.left = parseInt(circle.style.left) + 10 + "px";
+    left += 10;
+    circle.style.left = left + "px";
   }
+});
+
+function circleClick(x, y) {
+  const circlePos = circle.getBoundingClientRect();
+  let clickLeft = x - circlePos.width / 2;
+  let clickTop = y - circlePos.height / 2;
+  circle.style.left = clickLeft + "px";
+  circle.style.top = clickTop + "px";
+}
+
+window.addEventListener("click", (e) => {
+  circleClick(e.clientX, e.clientY);
 });
