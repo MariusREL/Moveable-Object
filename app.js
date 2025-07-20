@@ -17,4 +17,10 @@ document.addEventListener("keydown", (e) => {
   if (e.code === "KeyS") {
     circle.style.top = parseInt(circle.style.top) + 10 + "px";
   }
+  if (e.code === "KeyA") {
+    circle.style.left = parseInt(circle.style.left) - 10 + "px";
+  }
+  if (e.code === "KeyD") {
+    circle.style.left = parseInt(circle.style.left) + 10 + "px";
+  }
 });
