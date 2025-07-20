@@ -14,6 +14,7 @@ function centerCircle() {
 window.addEventListener("DOMContentLoaded", centerCircle);
 window.addEventListener("resize", centerCircle);
 
+// adds wasd functionality while keeping the circle (somewhat) inside the viewport
 document.addEventListener("keydown", (e) => {
   let top = parseInt(window.getComputedStyle(circle).top);
   let left = parseInt(window.getComputedStyle(circle).left);
@@ -39,14 +40,14 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-function circleClick(x, y) {
-  const circlePos = circle.getBoundingClientRect();
-  let clickLeft = x - circlePos.width / 2;
-  let clickTop = y - circlePos.height / 2;
-  circle.style.left = clickLeft + "px";
-  circle.style.top = clickTop + "px";
-}
-
+// adds click functionality
 window.addEventListener("click", (e) => {
+  function circleClick(x, y) {
+    const circlePos = circle.getBoundingClientRect();
+    let clickLeft = x - circlePos.width / 2;
+    let clickTop = y - circlePos.height / 2;
+    circle.style.left = clickLeft + "px";
+    circle.style.top = clickTop + "px";
+  }
   circleClick(e.clientX, e.clientY);
 });
